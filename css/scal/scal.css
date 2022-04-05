@@ -1,0 +1,162 @@
+/*
+scal.css - The style sheet for the scal calendar control.
+
+Everything style-wise in scal is controlled through the use of css classes.  You begin by defining your
+base element (i.e. the div that will hold the calendar) with a style class as defined in this file.  From there,
+all elements of the calendar will automatically be assigned their style as a subset of the class.
+
+To make a new style, just copy the scal classes paste at the bottom of the file.  Change the
+css class name to a unique name (ex. .scal to .mycalendar) and then you will have your own unique class for scal.
+Once the css is in place, update your HTML to use the new class name in the base element definition:
+
+<div id="calendar_holder" class="scal"></div>
+
+That's all you need to do to create your own style for scal.  Of course, you can also derive your own classes from
+the scal class itself.  Just override the element you want to change and then append your new class name to the 
+class element of the base element:
+
+.mycal{background-color:red;}
+
+<div id="calendar_holder" class="scal mycal"></div>
+
+Now, you'll have a sweet red background for your scal.
+
+P.S. Try out the included versions to see how they work and have fun! 
+*/
+
+.scal{
+	background-color: white;
+	margin:3px;
+	border:1px dashed gray;
+	font-size:24pt;
+	width:436px;
+	min-height:400px;
+	display:block;
+	padding:10px;
+	font-size:24pt;
+	font-family:'Lucida Grande',Verdana,Arial,Sans-Serif;
+	line-height:normal;
+}
+.scal:hover{
+	cursor:pointer;
+	/*cursor:hand; /* If you're worried about old IE versions, turn this on.  I have it off because I hate seeing css exceptions in my debug window. ;) */
+}
+.scal .calwrapper{
+}
+.scal .calweekswrapper{
+	display:block;
+}
+.scal .calheader{
+	display: block;
+	width:100%;
+	text-align:center;
+	margin-bottom:2px;
+}
+.scal .caltitle{
+	width:60%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+.scal .calcontrol{
+	margin: 2px;
+	padding: 2px;
+	font-size:12pt;
+	font-weight: bold;
+}
+.scal .calcontrol:hover{
+	background-color:red;
+	color:white;
+}
+.scal .calclose{
+	border: 1px solid black;
+	float:right;
+}
+.scal .calprevmonth{
+	float:left;
+}
+.scal .calnextmonth{
+	float:right;
+}
+.scal .calnextyear{
+	display:none;
+}
+.scal .calprevyear{
+	display:none;
+}
+.scal .daybox{
+	float:left;
+	border:1px solid black;
+	width: 60px;
+	color:black;
+	text-align:center;	
+}
+.scal .dayboxvalue{
+    display: none;
+}
+.scal .dayboxname{
+	background-color: black;
+	color:white;
+	font-size:16pt;
+}
+.scal .dayboxsunday{
+	background-color: lightgray;
+}
+.scal .dayboxsaturday{
+	background-color: lightgray;
+}
+.scal .daybox:hover{
+	border:1px solid red;
+}
+.scal .dayboxname:hover{
+	border:1px solid black;
+}
+.scal .dayinmonth{
+	color: black;
+}
+.scal .dayoutmonth{
+	color:gray;
+}
+.scal .dayselected{
+	background-color: red;
+	color: white;
+}
+.scal .daycurrent{
+	border:1px solid red;
+}
+.scal .weekbox{
+	width:100%;
+	display:block;
+}
+.scal .endweek{
+	float:left;
+}
+.scal .weekboxname{
+}
+
+
+/* 
+tinyscal - a mini version of the calendar type.  useful in tight spaces. 
+ usage: define class of base element as "scal tinyscal" as tinyscal is 
+        dependent on scal.
+*/
+.tinyscal{
+	font-size:8pt;
+	width:154px;
+	min-height:130px;
+}
+.tinyscal .calcontrol{
+	font-size:8pt;
+}
+.tinyscal .caltitle{
+	padding:3px;
+}
+.tinyscal .daybox{
+	width: 20px;
+}
+.tinyscal .dayboxname{
+	font-size: 8pt;
+}
+.tinyscal .weekboxname{
+	margin-top:5px;
+}

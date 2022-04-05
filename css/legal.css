@@ -1,0 +1,92 @@
+/* Ad Entry Layout */
+#adTopBar {
+	margin:auto;
+	text-align:left;
+	margin-bottom: 10px;
+}
+
+#adText {
+	float:left;
+	width: 375px;
+}
+
+#sideBar {
+	float:left;
+	margin-left:30px;
+	width: 200px;
+}
+
+#adTextCntrl body {
+	font-size:.5em;
+}
+
+/* Ad Entry Sidebar items */
+.entryButton {
+	border:solid 1px #000000;
+
+	margin-bottom:2px;
+
+	width:95px;
+	
+	font-size:.8em;
+}
+
+.wide {
+	width: 198px;
+}
+
+.entryButton a, .entryButton a:visited, .entryButton a:active, .entryButton a:hover {
+	padding: 1px 0;
+	
+	text-decoration:none;
+	
+	display:block;
+	color:#000000;
+}
+
+.entryButton a:hover {
+	background-color:#FFFFCC;
+}
+
+
+#runDateShortcut {
+	border: solid 1px #000000;
+}
+
+#currentRunDates {
+	margin-top:10px;
+	margin-bottom: 10px;
+	
+	min-height:96px;
+	height:auto !important;
+	height:96px;
+}
+
+#currentRunDates .weekdayLabel {
+	font-size: 0.75em;
+}
+
+#currentRunDates input {
+	width:68px;
+	margin:0;
+	border:solid 1px #FFFFFF;
+	text-align:center;
+}
+
+#currentRunDates .runDate {
+	border:solid 1px #000000;
+}
+
+#topButtons {
+
+}
+
+#bottomButtons {
+
+}
+
+#srchResultsTbl th, #srchResultsTbl td {
+	padding: 0 3px;
+	margin:0;
+	border: solid 1px #000000;
+}

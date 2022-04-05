@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TBJ Proof" pageWidth="612" pageHeight="792" columnWidth="552" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Documents and Settings\\Summit\\Desktop\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="JobNumber" class="java.lang.String">
+		<defaultValueExpression><![CDATA["321"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ResourceDir" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Z:/businessjournaldev/reports"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT REPLACE(REPLACE(REPLACE(adtext, 'STRONG>', 'B>'), 'EM>', 'I>'), '', '') AS adtext, legal_ads.id, legal_ads.proofnotes, IF(legal_ads.estimatedcost!="", CONCAT("<B>Cost Estimate:</B> ", legal_ads.estimatedcost), "") AS estimatedcost, GROUP_CONCAT(DATE_FORMAT(date, '%m/%d/%Y') SEPARATOR ', ') AS rds FROM legal_ads INNER JOIN legal_rundates ON legal_ads.id=legal_rundates.legal_ad_id WHERE legal_ads.id=$P{JobNumber} GROUP BY legal_ads.id;]]>
+	</queryString>
+	<field name="adtext" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proofnotes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estimatedcost" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rds" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="752">
+			<image>
+				<reportElement x="17" y="0" width="236" height="106"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{ResourceDir} + "/bj_logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="58" width="278" height="33">
+					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Proof Sheet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="259" width="278" height="33"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Proof OK's by:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="343" width="278" height="1"/>
+			</line>
+			<line>
+				<reportElement x="17" y="319" width="236" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="694" width="278" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="354" width="278" height="33"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Note: Hyphenation and column inch may
+fluctuate according to actual page column.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="695" width="278" height="57"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[The Business Journal
+1315 Van Ness, Suite 200, Fresno, CA 93721
+(559) 490-3400 • (559) 490-3531]]></text>
+			</staticText>
+			<line>
+				<reportElement x="278" y="0" width="1" height="752"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="344" y="58" width="144" height="694"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Times New Roman" size="8" pdfFontName="Times-Roman" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{adtext} + "\n&nbsp;&nbsp;" + $F{rds}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="344" y="26" width="144" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Job Number: " + $F{id}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="17" y="106" width="236" height="20"/>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estimatedcost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="415" width="236" height="261"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{proofnotes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
